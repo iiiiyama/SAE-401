@@ -10,4 +10,7 @@ class user_perso(AbstractUser):
     email = models.EmailField(max_length=30)
     num_compte = models.CharField(max_length=10, unique=True)
     
-    
+    def __str__(self) -> str:
+        return self.username
+
+#class PasswordResetForm()
