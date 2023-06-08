@@ -4,7 +4,7 @@ from . import models
 
 class loginForm(ModelForm):
     class Meta:
-        model = models.user_perso
+        model = models.login
         fields = ('nom', 'prenom', 'adresse', 'email','num_compte')
         labels = {
             'nom' : _('Nom'),

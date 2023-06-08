@@ -1,9 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class user_perso(AbstractUser):
+class login(models.Model):
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
     adresse = models.CharField(max_length=200)
@@ -11,6 +10,7 @@ class user_perso(AbstractUser):
     num_compte = models.CharField(max_length=10, unique=True)
     
     def __str__(self) -> str:
-        return self.username
+        chaine = f"{self.login}"
+        return chaine
 
-#class PasswordResetForm()
+#class PasswordResetForm()  
