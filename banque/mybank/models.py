@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 
 class login(models.Model):
+    username = models.CharField(max_length=10)
+    password = models.CharField()
+
+class account(models.Model):
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
     adresse = models.CharField(max_length=200)
