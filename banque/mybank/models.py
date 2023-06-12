@@ -4,7 +4,11 @@ from django.db import models
 
 class login(models.Model):
     username = models.CharField(max_length=10)
-    password = models.CharField()
+    password = models.CharField(max_length=20)
+
+    def __str__(self) -> str:
+        chaine = f"{self.login}"
+        return chaine
 
 class account(models.Model):
     nom = models.CharField(max_length=100)
@@ -14,7 +18,7 @@ class account(models.Model):
     num_compte = models.CharField(max_length=10, unique=True)
     
     def __str__(self) -> str:
-        chaine = f"{self.login}"
+        chaine = f"{self.account}"
         return chaine
 
 #class PasswordResetForm()  
