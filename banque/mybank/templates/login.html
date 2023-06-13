@@ -11,10 +11,10 @@
     <form method="post" action="/compte">
         {% csrf_token %}
         <label for="username">Nom d'utilisateur:</label>
-        <input type="text" id="username" name="username" required><br><br>
+        <input type="text" id="username" name="username" placeholder="saisissez votre identifiant" required><br><br>
         
         <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <input type="password" id="password" placeholder="entrer votre mot de passe" name="password" required><br><br>
         
         <input type="submit" value="Se connecter">
     </form>
