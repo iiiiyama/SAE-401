@@ -2,31 +2,47 @@ body{
     height : 100%;
 }
 body {
-    background: rgb(29, 131, 131);
+    background: rgb(66, 174, 174);
     background-attachment: fixed;
     }
 h1{
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-input[type=text], input[type=password] {
-    width: 100%;
+
+input [type="text"]{
+    position: absolute;
+    top: 60%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
+input[type=password] {
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 65%;
+    left: 45%;
+    width: 10%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     border: 1px solid #ccc;
     box-sizing: border-box;
-   }
-   
-   
+    }
+       
 input[type=submit] {
+    position: absolute;
+    top: 80%;
+    left: 45%;
     background-color: #53af57;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
-   }
+    width: 10%;
+    }
