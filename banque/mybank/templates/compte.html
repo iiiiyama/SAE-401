@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <title>Votre compte personnel</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{%static 'style.css'%}">
 </head>
 <body>
+    {% csrf_token %}
     <h1> compte</h1>
-    <form method="post">
-        {% csrf_token %}
-        <div>hihiha</div>
-    </form>
+    <a class="acceuil" href="/mybank/acceuil">acceuil</a>
+    <a class="comptes" href="/mybank/comptes">comptes</a>
+    <a class="virements" href="/mybank/virements">virements</a>
+    
+    
 </body>
 </html>

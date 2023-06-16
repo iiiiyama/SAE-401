@@ -2,9 +2,17 @@ body{
     height : 100%;
 }
 body {
-    background: rgb(66, 174, 174);
+    background: rgb(11, 255, 255);
     background-attachment: fixed;
-    }
+}
+
+.cadre{
+    background-color: white;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
 h1{
     position: absolute;
     top: 30%;
@@ -12,16 +20,34 @@ h1{
     transform: translate(-50%, -50%);
 }
 
+label [for="username"]{
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    
+}
+
+label [for="password"]{
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    
+}
+
 input [type="text"]{
     position: absolute;
     top: 60%;
-    left: 45%;
-    transform: translate(-50%, -50%);
+    left: 55%;
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 input[type=password] {
-    margin-left: auto;
-    margin-right: auto;
     position: absolute;
     top: 65%;
     left: 45%;
