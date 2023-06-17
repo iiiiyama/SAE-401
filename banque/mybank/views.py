@@ -12,8 +12,13 @@ def compte(request):
 
 def login(request):
     lform = loginForm(request.POST)
-    if lform.is_valid():
+    if request.method == 'POST' and lform.is_valid():
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.create_user(username=username, password=password)
         login = lform.save()
+        
         return HttpResponseRedirect("/compte")
     else:
         return render(request,"login.html", {"form": loginForm})
+    
