@@ -21,6 +21,7 @@ def login(request):
             login(request, user)
             return HttpResponseRedirect("/compte")
     else:
+<<<<<<< HEAD
         lform = AuthenticationForm()
         return render(request,"login.html", {"form": lform})
 
@@ -33,3 +34,7 @@ def register(request):
         else:
             rform = UserCreationForm()
             return render(request, "register.html", {"form": rform})
+=======
+        return render(request,"login.html", {"form": loginForm})
+    x
+>>>>>>> 2c81b5ffa902354f48db1042f18f8c39e9a4c76b
