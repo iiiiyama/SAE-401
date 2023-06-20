@@ -37,4 +37,3 @@ def register(request):
 =======
         return render(request,"login.html", {"form": loginForm})
     x
->>>>>>> 2c81b5ffa902354f48db1042f18f8c39e9a4c76b
