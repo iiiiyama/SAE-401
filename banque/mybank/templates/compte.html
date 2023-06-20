@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     {% load static %}
     <title>Votre compte personnel</title>
@@ -8,12 +8,17 @@
 </head>
 <body>
     {% csrf_token %}
-    <h1> compte</h1>
+    <h1> acceuil</h1>
     <a class="acceuil" href="/mybank/acceuil">acceuil</a>
     <a class="comptes" href="/mybank/accounts">comptes</a>
     <a class="virements" href="/mybank/virements">virements</a>
-    
-    {% include 'accounts.html' %}
 
+{% block content %}
+<ol> <h3> Ma liste de films</h3>
+    {% for l in liste %}
+        <li> {{l}} <a href="/mabibliotheque/affiche/{{l.id}}/">montrer</a> <a href="/mabibliotheque/update/{{l.id}}/"> editer</a> <a href="/mabibliotheque/delete/{{l.id}}/"> supprimer</a></li>
+    {% endfor %}
+</ol>
+{% endblock %}
 </body>
 </html>

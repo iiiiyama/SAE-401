@@ -1,24 +1,35 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.shortcuts import render, HttpResponseRedirect
 
 # Create your views here.
 
 from .forms import loginForm, accountForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from . import models
-from django.shortcuts import render, HttpResponseRedirect
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 def compte(request):
     liste = list(models.account.objects.all())
     return render(request,"compte.html",{"form": accountForm})
 
 def login(request):
-    lform = loginForm(request.POST)
-    if request.method == 'POST' and lform.is_valid():
-        username = request.POST['username']
-        password = request.POST['password']
-        user = User.objects.create_user(username=username, password=password)
-        login = lform.save()
-        
-        return HttpResponseRedirect("/compte")
+    if request.method == 'POST':
+        lform = AuthenticationForm(request, data=request.POST)
+        if lform.is_valid():
+            user = lform.get_user()
+            login(request, user)
+            return HttpResponseRedirect("/compte")
     else:
-        return render(request,"login.html", {"form": loginForm})
-    
+        lform = AuthenticationForm()
+        return render(request,"login.html", {"form": lform})
+
+def register(request):
+        if request.method == 'POST':
+            rform = UserCreationForm(request.POST)
+            if rform.is_valid():
+                rform = rform.save()
+                return render(request, "/login", {"form": rform})
+        else:
+            rform = UserCreationForm()
+            return render(request, "register.html", {"form": rform})
