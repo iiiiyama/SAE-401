@@ -21,4 +21,4 @@ def login(request):
         return HttpResponseRedirect("/compte")
     else:
         return render(request,"login.html", {"form": loginForm})
-    
+    x
