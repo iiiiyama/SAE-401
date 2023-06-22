@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from django import forms
+from django.contrib.auth.models import User  
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from . import models
@@ -38,11 +39,12 @@ class CustomUserCreationForm(UserCreationForm):
         password2 = self.cleaned_data['password2']  
   
         if password1 and password2 and password1 != password2:  
-            raise ValidationError("Password don't match")  
+            raise ValidationError("pas le même mot de passe")  
         return password2  
   
     def save(self, commit = True):  
         user = User.objects.create_user(  
-            self.cleaned_data['username'], 
+            self.cleaned_data['username'],
+            self.cleaned_data['password1'], 
         )
         return user

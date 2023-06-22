@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from mybank.views import register
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('mybank/', include('mybank.urls')),
     path('', include('mybank.urls')),
+    path('register', register, name = 'register')
 ]

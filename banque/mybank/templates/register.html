@@ -7,15 +7,18 @@
 <title>Page d'enregistrement</title>
 </head>
 <body>
-    <div class="cadre">
     <h1>nouvel utilisateur</h1>
+    <div class="cadre">
     <form method="post" action="/compte">
         {% csrf_token %}
         <label for="username">Nom d'utilisateur:</label>
         <input type="text" id="username" name="username" placeholder="veuillez entrez votre prénom suivi de votre nom de famille" required><br><br>
         
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" placeholder="entrez votre mot de passe" name="password" required><br><br>
+        <label for="password1">Nouveau mot de passe:</label>
+        <input type="password" id="password1" placeholder="entrez votre mot de passe" name="password1" required><br><br>
+
+        <label for="password2">seconde saisie du mot de passe :</label>
+        <input type="password" id="password2" placeholder="veuillez à nouveau saisir votre mot de passe" name="password2" required><br><br>
         
         <input type="submit" value="Se connecter">
     </form>

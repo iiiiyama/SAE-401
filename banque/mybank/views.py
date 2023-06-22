@@ -2,16 +2,16 @@ from django.shortcuts import render, HttpResponseRedirect
 
 # Create your views here.
 
-from .forms import loginForm, accountForm
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .forms import accountForm, CustomUserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from . import models
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 def compte(request):
-    liste = list(models.account.objects.all())
-    return render(request,"compte.html",{"form": accountForm})
+    form = list(models.account.objects.all())
+    return render(request,"compte.html",{"form": form})
 
 def login(request):
     if request.method == 'POST':
@@ -25,11 +25,11 @@ def login(request):
         return render(request,"login.html", {"form": lform})
 
 def register(request):
-        if request.method == 'POST':
-            rform = UserCreationForm(request.POST)
+        if request.POST == 'POST':
+            rform = CustomUserCreationForm()
             if rform.is_valid():
-                rform = rform.save()
-                return render(request, "/login", {"form": rform})
+                rform.save()
+                return render(request,"compte.html", {"form": rform})
         else:
-            rform = UserCreationForm()
+            rform = CustomUserCreationForm()
             return render(request, "register.html", {"form": rform})
