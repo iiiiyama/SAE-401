@@ -1,14 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 # Create your models here.
 
-class login(models.Model):
-    username = models.CharField(max_length=10)
-    password = models.CharField(max_length=20)
+class CustomUser(AbstractBaseUser):
+    username = models.CharField(max_length=20,unique=True)
+    password1 = models.CharField(max_length=20)
+    password2 = models.CharField(max_length=20)
+
+    username = 'username'
+
+    objects = BaseUserManager()
 
     def __str__(self) -> str:
-        chaine = f"{self.login}"
-        return chaine
+        return self.username
 
 class account(models.Model):
     nom = models.CharField(max_length=100)
@@ -21,4 +26,4 @@ class account(models.Model):
         chaine = f"{self.account}"
         return chaine
 
-#class PasswordResetForm()  
+#class CustomUser()  

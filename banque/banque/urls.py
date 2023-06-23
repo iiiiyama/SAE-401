@@ -23,5 +23,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('mybank/', include('mybank.urls')),
     path('', include('mybank.urls')),
-    path('register', register, name = 'register')
 ]
