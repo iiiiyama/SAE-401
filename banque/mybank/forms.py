@@ -20,12 +20,13 @@ from . import models
 class accountForm(ModelForm):
     class Meta:
         model = models.account
-        fields = ('nom', 'prenom', 'adresse', 'email','num_compte')
+        fields = ('nom', 'prenom', 'email', 'nom_compte', 'num_compte')
         labels = {
             'nom' : _('Nom'),
             'prenom' : _('Prenom') ,
-            'adresse' : _('Adresse'),
+            #'adresse' : _('Adresse'),
             'email' : _('Email'),
+            'nom_compte' : _('Nom_compte'),
             'num_compte' : _('Num_compte'),
         }
 
@@ -49,3 +50,4 @@ class CustomUserCreationForm(UserCreationForm):
             self.cleaned_data['password1'], 
         )
         return user
+    

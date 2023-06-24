@@ -9,15 +9,15 @@
 <body>
     {% csrf_token %}
     <h1> acceuil</h1>
-    <a href="/mybank/acceuil">acceuil</a>
-    <a href="/mybank/accounts">comptes</a>
-    <a href="/mybank/virements">virements</a>
+    <a href="/compte">acceuil</a>
+    <a href="/addaccount">comptes</a>
+    <a href="/virements">virements</a>
     <a href="/login">se déconnecter</a>
 
 {% block content %}
-<ol> <h3> Ma liste de films</h3>
+<ol> <h3> Mes comptes</h3>
     {% for l in liste %}
-        <li> {{l}} <a href="/mabibliotheque/affiche/{{l.id}}/">montrer</a> <a href="/mabibliotheque/update/{{l.id}}/"> editer</a> <a href="/mabibliotheque/delete/{{l.id}}/"> supprimer</a></li>
+        <li> {{l}} <a href="/mybank/accounts/{{l.id}}/">montrer</a> <a href="/mybank/update/{{l.id}}/"> editer</a> <a href="/mybank/delete/{{l.id}}/"> supprimer</a></li>
     {% endfor %}
 </ol>
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends "mybank/compte.html" %}
+
+{% block title %} comptes {% endblock %}
+
+{% block content %}
+    {% if id != None %}
+    <form method="post" action="/mybank/updatetraitement/{{id}}/">
+    {% else %}
+        <form method="post" action="/mybank/traitement/">
+    {% endif %}
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input class="envoi" type="submit" value="ajouter le compte">
+</form>
+{% endblock %}

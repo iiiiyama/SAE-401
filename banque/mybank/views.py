@@ -5,15 +5,8 @@ from django.shortcuts import render, HttpResponseRedirect
 from .forms import accountForm, CustomUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from . import models
-from django.contrib.auth import get_user_model, authenticate
-from django.core.exceptions import ValidationError
+from django.contrib.auth import authenticate
 from django.contrib import messages
-
-User = get_user_model()
-
-def compte(request):
-    form = list(models.account.objects.all())
-    return render(request,"compte.html",{"form": form})
 
 def login(request):
     if request.method == 'POST':
@@ -28,21 +21,61 @@ def login(request):
 
 def register(request):
     if request.method == "POST":
-        rform = UserCreationForm(request.POST)
+        rform = CustomUserCreationForm(request)
         if rform.is_valid():
             rform.save()
             username = rform.cleaned_data['username'],
-            password1 = rform.cleaned_data['password1'],
-            password2 = rform.cleaned_data['password2'],
-            user = authenticate(username=username, password=password1)
+            password = rform.cleaned_data['password1'],
+            user = authenticate(username=username, password=password)
             login(request, user)
 
             messages.add_message(request, messages.success, 'utilisateur créé')
             return render(request,"compte.html")
-
-        if password1 != password2:  
-            raise ValidationError("pas le même mot de passe")  
-        return password2
+            
     else:
         rform = UserCreationForm()
         return render(request, "register.html", {"form": rform})
+    
+def accounts(request):
+    if request.method == "POST":
+        form = accountForm(request.POST)
+        if form.is_valid():
+            film = form.save()
+            return render(request, "mabibliotheque/affiche.html", {"film": film})
+        else:
+            return render(request, "mabibliotheque/ajout.html", {"form": form})
+    else:
+        form = accountForm()
+        return render(request, "mabibliotheque/ajout.html", {"form": form})
+
+def accounts(request):
+    form = list(models.account.objects.all())
+    return render(request,"compte.html",{"form": form})
+
+def update(request, id):
+    account = models.account.objects.get(pk=id)
+    form = accountForm(account.repertoire())
+    return render(request, "mybank/addaccount.html",{"form":form, "id":id})
+
+def delete(id):
+    account = models.account.objects.get(pk=id)
+    account.delete()
+    return HttpResponseRedirect("/mybank/compte.html")
+
+def updatetraitement(request, id):
+    form = accountForm(request.POST)
+    if form.is_valid():
+        account = form.save(commit=False)
+        account.id = id
+        account.save()
+        return HttpResponseRedirect("/mybank/compte.html")
+    else:
+        return render(request, "mybank/addaccount.html", {"form": form, "id": id})
+    
+def traitement(request):
+    form = accountForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/mabibliotheque/index/")
+    else:
+        return render(request,"mabibliotheque/ajout.html", {"form": form})
