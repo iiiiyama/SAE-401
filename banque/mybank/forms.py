@@ -44,7 +44,7 @@ class CustomUserCreationForm(UserCreationForm):
             raise ValidationError("pas le même mot de passe")  
         return password2  
   
-    def save(self, commit = True):
+    def save(self):
         user = User.objects.create_user(  
             self.cleaned_data['username'],
             self.cleaned_data['password1'], 

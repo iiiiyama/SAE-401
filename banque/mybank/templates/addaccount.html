@@ -1,4 +1,4 @@
-{% extends "mybank/compte.html" %}
+{% extends "compte.html" %}
 
 {% block title %} comptes {% endblock %}
 
@@ -6,7 +6,7 @@
     {% if id != None %}
     <form method="post" action="/mybank/updatetraitement/{{id}}/">
     {% else %}
-        <form method="post" action="/mybank/traitement/">
+        <form method="post" action="/traitement/">
     {% endif %}
     {% csrf_token %}
     {{ form.as_ul }}

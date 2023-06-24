@@ -24,7 +24,7 @@ class account(models.Model):
     num_compte = models.CharField(max_length=10, unique=True)
     
     def __str__(self) -> str:
-        chaine = f"{self.prenom} {self.nom} à créé le compte {self.nom_compte}"
+        chaine = f"{self.prenom} {self.nom} à créé le compte "
         return chaine
     
     def repertoire(self):
