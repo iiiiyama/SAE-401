@@ -18,7 +18,7 @@ class CustomUser(AbstractBaseUser):
 class account(models.Model):
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
-    adresse = models.CharField(max_length=200)
+    #adresse = models.CharField(max_length=200)
     email = models.EmailField(max_length=30)
     nom_compte = models.CharField(max_length=20, unique=True, default='')
     num_compte = models.IntegerField(unique=True)

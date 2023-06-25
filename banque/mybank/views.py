@@ -59,7 +59,7 @@ def update(request, id):
 
 def delete(id):
     account = models.account.objects.get(pk=id)
-    account.delete()
+    account.delete(id)
     return HttpResponseRedirect("/compte")
 
 def updatetraitement(request, id):
