@@ -20,11 +20,11 @@ from . import models
 class accountForm(ModelForm):
     class Meta:
         model = models.account
-        fields = ('nom', 'prenom', 'email', 'nom_compte', 'num_compte')
+        fields = ('nom', 'prenom', 'adresse', 'email', 'nom_compte', 'num_compte')
         labels = {
             'nom' : _('Nom'),
             'prenom' : _('Prenom') ,
-            #'adresse' : _('Adresse'),
+            'adresse' : _('Adresse'),
             'email' : _('Email'),
             'nom_compte' : _('Nom_compte'),
             'num_compte' : _('Num_compte'),
@@ -44,10 +44,11 @@ class CustomUserCreationForm(UserCreationForm):
             raise ValidationError("pas le même mot de passe")  
         return password2  
   
-    def save(self):
+    def save(self, commit = True):
         user = User.objects.create_user(  
             self.cleaned_data['username'],
             self.cleaned_data['password1'], 
         )
         return user
+    
     

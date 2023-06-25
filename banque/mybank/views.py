@@ -49,8 +49,8 @@ def accounts(request):
         return render(request, "addaccount.html", {"form": form})
 
 def affiche(request):
-    form = list(models.account.objects.all())
-    return render(request,"compte.html",{"form": form})
+    liste = list(models.account.objects.all())
+    return render(request,"compte.html",{"liste": liste})
 
 def update(request, id):
     account = models.account.objects.get(pk=id)
@@ -60,7 +60,7 @@ def update(request, id):
 def delete(id):
     account = models.account.objects.get(pk=id)
     account.delete()
-    return HttpResponseRedirect("/compte.html")
+    return HttpResponseRedirect("/compte")
 
 def updatetraitement(request, id):
     form = accountForm(request.POST)
@@ -68,7 +68,7 @@ def updatetraitement(request, id):
         account = form.save(commit=False)
         account.id = id
         account.save()
-        return HttpResponseRedirect("/compte.html")
+        return HttpResponseRedirect("/compte")
     else:
         return render(request, "addaccount.html", {"form": form, "id": id})
     
@@ -76,6 +76,6 @@ def traitement(request):
     form = accountForm(request.POST)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect("/compte.html")
+        return HttpResponseRedirect("/compte")
     else:
         return render(request,"addaccount.html", {"form": form})

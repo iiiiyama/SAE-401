@@ -17,7 +17,7 @@
 {% block content %}
 <ol> <h3> Mes comptes</h3>
     {% for l in liste %}
-        <li> {{l}} <a href="/mybank/accounts/{{l.id}}/">montrer</a> <a href="/mybank/update/{{l.id}}/"> editer</a> <a href="/mybank/delete/{{l.id}}/"> supprimer</a></li>
+        <li> {{l}} <a href="/mybank/affiche/{{l.id}}/">montrer</a> <a href="/mybank/update/{{l.id}}/"> editer</a> <a href="/mybank/delete/{{l.id}}/"> supprimer</a></li>
     {% endfor %}
 </ol>
 {% endblock %}
