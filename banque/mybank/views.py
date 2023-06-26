@@ -80,14 +80,20 @@ def traitement(request):
     else:
         return render(request,"addaccount.html", {"form": form})
     
-def transfer(request):
+#################################### opérations ###########################################
+
+def operation_affiche(request):    
+    liste = list(models.account.objects.all())
+    return render(request,"operations.html",{"liste": liste})
+
+def virement_int (request):
     if request.method == 'POST':
-        account_from = request.POST['account_from']
-        account_to = request.POST['account_to']
+        account_from_id = request.POST['account_from']
+        account_to_id = request.POST['account_to']
         amount = request.POST['amount']
 
-        account_from = models.account.objects.get(id)
-        account_to = models.account.objects.get(id)
+        account_from = models.account.objects.get(id=account_from_id)
+        account_to = models.account.objects.get(id=account_to_id)
 
         if account_from.balance >= amount:
             
@@ -96,7 +102,8 @@ def transfer(request):
             account_from.save()
             account_to.save()
 
-            return HttpResponseRedirect("/opération")
-    
-    liste = list(models.account.objects.all())
-    return render(request,"operations.html",{"liste": liste})
+            return HttpResponseRedirect("/operation")
+        
+    else:
+        accounts = models.account.objects.all()
+        return render(request, "virement_int.html", {"accounts": accounts})
