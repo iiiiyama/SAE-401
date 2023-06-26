@@ -20,12 +20,13 @@ from . import models
 class accountForm(ModelForm):
     class Meta:
         model = models.account
-        fields = ('nom', 'prenom', 'email', 'nom_compte', 'num_compte')
+        fields = ('nom', 'prenom', 'email', 'montant', 'nom_compte', 'num_compte')
         labels = {
             'nom' : _('Nom'),
             'prenom' : _('Prenom') ,
             #'adresse' : _('Adresse'),
             'email' : _('Email'),
+            'montant' : _('Montant'),
             'nom_compte' : _('Nom du compte'),
             'num_compte' : _('Numéro du compte'),
         }

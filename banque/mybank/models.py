@@ -20,11 +20,12 @@ class account(models.Model):
     prenom = models.CharField(max_length=100)
     #adresse = models.CharField(max_length=200)
     email = models.EmailField(max_length=30)
+    montant = models.IntegerField(default=0)
     nom_compte = models.CharField(max_length=20, default='')
     num_compte = models.IntegerField()
     
     def __str__(self) -> str:
-        chaine = f"{self.prenom} {self.nom} à créé le compte {self.nom_compte}"
+        chaine = f"{self.prenom} {self.nom} à créé le compte {self.nom_compte}, il y a un montant de {self.montant} €"
         return chaine
     
     def repertoire(self):

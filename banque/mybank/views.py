@@ -79,3 +79,25 @@ def traitement(request):
         return HttpResponseRedirect("/compte")
     else:
         return render(request,"addaccount.html", {"form": form})
+    
+def transfer(request):
+    if request.method == 'POST':
+        account_from_id = request.POST['account_from']
+        account_to_id = request.POST['account_to']
+        amount = request.POST['amount']
+
+        account_from = models.account.objects.get(id=account_from_id)
+        account_to = models.account.objects.get(id=account_to_id)
+
+        if account_from.balance >= amount:
+            
+            account_from.balance -= amount
+            account_to.balance += amount
+            account_from.save()
+            account_to.save()
+
+            return HttpResponseRedirect('confirmation')
+    
+    accounts = models.account.objects.all()
+    context = {'accounts': accounts}
+    return render(request, 'transfer.html', context)
