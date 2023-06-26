@@ -57,9 +57,9 @@ def update(request, id):
     form = accountForm(account.repertoire())
     return render(request, "addaccount.html",{"form":form, "id":id})
 
-def delete(id):
+def delete(request, id):
     account = models.account.objects.get(pk=id)
-    account.delete(id)
+    account.delete()
     return HttpResponseRedirect("/compte")
 
 def updatetraitement(request, id):

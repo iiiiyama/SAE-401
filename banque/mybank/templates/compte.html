@@ -17,7 +17,7 @@
 {% block content %}
 <ol> <h3> Mes comptes</h3>
     {% for l in liste %}
-        <li> {{l}} <a href="/affiche/{{l.id}}/">montrer</a> <a href="/update/{{l.id}}/"> editer</a> <a href="delete"> supprimer</a></li>
+        <li> {{l}} <a href="/affiche/{{l.id}}/">montrer</a> <a href="/update/{{l.id}}/"> editer</a> <a href="/delete/{{l.id}}/"> supprimer</a></li>
     {% endfor %}
 </ol>
 {% endblock %}
