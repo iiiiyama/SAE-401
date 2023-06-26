@@ -9,19 +9,19 @@
 <body>
     <h1>Sélectionnez le compte sur lequel vous voulez effectuez un transfert :</h1>
 
-    <form method="post" action="/transfer/">
+    <form method="post" action="/virement_int/">
         {% csrf_token %}
         <label for="account_from">Compte source:</label>
         <select name="account_from" id="account_from">
             {% for account in accounts %}
-                <option value="{{ account.id }}">{{ account.name }}</option>
+                <option value="{{ account.id }}">{{ account.nom_compte }}</option>
             {% endfor %}
         </select>
 
         <label for="account_to">Compte de destination:</label>
         <select name="account_to" id="account_to">
             {% for account in accounts %}
-                <option value="{{ account.id }}">{{ account.name }}</option>
+                <option value="{{ account.id }}">{{ account.nom_compte }}</option>
             {% endfor %}
         </select>
 

@@ -13,5 +13,5 @@ path('updatetraitement/<int:id>/', views.updatetraitement),
 path('traitement/', views.traitement),
 path('delete/<int:id>/', views.delete),
 path('operations/', views.operation_affiche),
-path('virement_int', views.virement_int)
+path('virement_int/', views.virement_int)
 ]

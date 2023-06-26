@@ -35,7 +35,7 @@ class CustomUserCreationForm(UserCreationForm):
     model = models.CustomUser
     username = forms.CharField(label='Nom d utilisateur :', min_length=5, max_length=30)  
     password1 = forms.CharField(label='Nouveau mot de passe :', widget=forms.PasswordInput)  
-    password2 = forms.CharField(label='confirmer votre mot de passe :', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='confirmez votre mot de passe :', widget=forms.PasswordInput)
 
     def checkpswrd(self):  
         password1 = self.cleaned_data['password1']  

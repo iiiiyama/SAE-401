@@ -90,19 +90,19 @@ def virement_int (request):
     if request.method == 'POST':
         account_from_id = request.POST['account_from']
         account_to_id = request.POST['account_to']
-        amount = request.POST['amount']
+        amount = int(request.POST['amount'])
 
         account_from = models.account.objects.get(id=account_from_id)
         account_to = models.account.objects.get(id=account_to_id)
 
-        if account_from.balance >= amount:
+        if account_from.montant >= amount:
             
-            account_from.balance -= amount
-            account_to.balance += amount
+            account_from.montant -= amount
+            account_to.montant += amount
             account_from.save()
             account_to.save()
 
-            return HttpResponseRedirect("/operation")
+            return HttpResponseRedirect("/operations")
         
     else:
         accounts = models.account.objects.all()
