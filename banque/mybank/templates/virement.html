@@ -1,0 +1,15 @@
+{% extends "compte.html" %}
+
+{% block title %} mes virements {% endblock %}
+
+{% block content %}
+    {% if id != None %}
+    <form method="post" action="/updatetraitement/{{id}}/">
+    {% else %}
+        <form method="post" action="/traitement/">
+    {% endif %}
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input class="envoi" type="submit" value="ajouter le compte">
+</form>
+{% endblock %}
