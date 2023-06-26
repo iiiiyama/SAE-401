@@ -12,4 +12,5 @@ path('update/<int:id>/',views.update),
 path('updatetraitement/<int:id>/', views.updatetraitement),
 path('traitement/', views.traitement),
 path('delete/<int:id>/', views.delete),
+path('opérations/', views.transfer),
 ]

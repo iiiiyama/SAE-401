@@ -1,0 +1,11 @@
+{% extends "compte.html" %}
+
+{% block title %} mes virements {% endblock %}
+
+{% block content %}
+<ol> <h3> Mes comptes</h3>
+    {% for l in liste %}
+    <li> {{l}} <a href="/transfer/{{l.id}}/">virement interne</a> <a href="/external_transfer/{{l.id}}/">virement externe</a></li>
+    {% endfor %}
+</ol>
+{% endblock %}

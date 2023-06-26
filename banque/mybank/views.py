@@ -82,12 +82,12 @@ def traitement(request):
     
 def transfer(request):
     if request.method == 'POST':
-        account_from_id = request.POST['account_from']
-        account_to_id = request.POST['account_to']
+        account_from = request.POST['account_from']
+        account_to = request.POST['account_to']
         amount = request.POST['amount']
 
-        account_from = models.account.objects.get(id=account_from_id)
-        account_to = models.account.objects.get(id=account_to_id)
+        account_from = models.account.objects.get(id)
+        account_to = models.account.objects.get(id)
 
         if account_from.balance >= amount:
             
@@ -96,8 +96,7 @@ def transfer(request):
             account_from.save()
             account_to.save()
 
-            return HttpResponseRedirect('confirmation')
+            return HttpResponseRedirect("/opération")
     
-    accounts = models.account.objects.all()
-    context = {'accounts': accounts}
-    return render(request, 'transfer.html', context)
+    liste = list(models.account.objects.all())
+    return render(request,"operations.html",{"liste": liste})

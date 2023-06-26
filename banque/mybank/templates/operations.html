@@ -2,22 +2,21 @@
 <html lang="fr">
 <head>
     {% load static %}
-    <title>Votre compte personnel</title>
+    <title>virement</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{%static 'style.css'%}">
 </head>
 <body>
     {% csrf_token %}
-    <h1> acceuil</h1>
+    <h1> virement</h1>
     <a href="/compte">acceuil</a>
-    <a href="/addaccount">comptes</a>
-    <a href="/operations">opérations</a>
-    <a href="/login">se déconnecter</a>
+    <a href="/virement_int">virement interne</a>
+    <a href="/virement_ext">virement externe</a>
 
 {% block content %}
 <ol> <h3> Mes comptes</h3>
     {% for l in liste %}
-        <li> {{l}} <a href="/affiche/{{l.id}}/">montrer</a> <a href="/update/{{l.id}}/"> editer</a> <a href="/delete/{{l.id}}/"> supprimer</a></li>
+        <li> {{l}} </li>
     {% endfor %}
 </ol>
 {% endblock %}
